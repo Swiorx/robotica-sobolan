@@ -6,9 +6,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Motoare {
     private DcMotor motorStanga, motorDreapta;
 
-    public Motoare(HardwareMap hardwareMap){
-        this.motorDreapta = hardwareMap.dcMotor.get("motorDreapta");
-        this.motorStanga = hardwareMap.dcMotor.get("motorStanga");
+    public Motoare(HardwareMap hardwareMap) {
+        motorDreapta = hardwareMap.dcMotor.get("motorDreapta");
+        motorStanga = hardwareMap.dcMotor.get("motorStanga");
 
         motorStanga.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorStanga.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -16,4 +16,18 @@ public class Motoare {
         motorDreapta.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorDreapta.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-}
+
+        public void putereStanga(double speed) {motorStanga.setPower(speed);}
+        public void putereDreapta(double speed) {motorDreapta.setPower(speed);}
+
+        public void setMotorPowers(double speedStanga, double speedDreapta, double multiplier){
+            motorStanga.setPower(speedStanga / multiplier);
+            motorDreapta.setPower(speedDreapta / multiplier);
+        }
+
+        public void stop(){
+            motorStanga.setPower(0);
+            motorDreapta.setPower(0);
+        }
+    }
+
