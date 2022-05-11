@@ -26,7 +26,7 @@ public class DriverMode extends LinearOpMode {
 
         waitForStart();
         if (isStopRequested()) return;
-
+//
         while (opModeIsActive()){
             if(gamepad1.left_stick_y != 0){
                 robot.mergatoare.putereStanga(gamepad1.left_stick_y);
