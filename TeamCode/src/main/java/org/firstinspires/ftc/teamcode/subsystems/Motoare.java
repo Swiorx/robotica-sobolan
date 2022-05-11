@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Motoare {
@@ -10,9 +11,11 @@ public class Motoare {
         motorDreapta = hardwareMap.dcMotor.get("motorDreapta");
         motorStanga = hardwareMap.dcMotor.get("motorStanga");
 
+        motorStanga.setDirection(DcMotorSimple.Direction.FORWARD);
         motorStanga.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorStanga.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        motorDreapta.setDirection(DcMotorSimple.Direction.REVERSE);
         motorDreapta.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorDreapta.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
@@ -20,9 +23,10 @@ public class Motoare {
         public void putereStanga(double speed) {motorStanga.setPower(speed);}
         public void putereDreapta(double speed) {motorDreapta.setPower(speed);}
 
-        public void setMotorPowers(double speedStanga, double speedDreapta, double multiplier){
-            motorStanga.setPower(speedStanga / multiplier);
-            motorDreapta.setPower(speedDreapta / multiplier);
+        public void setMotorPowers(double speedStanga, double speedDreapta){
+            motorStanga.setPower(speedStanga);
+            motorDreapta.setPower(speedDreapta);
+
         }
 
         public void stop(){

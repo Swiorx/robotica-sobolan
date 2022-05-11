@@ -28,30 +28,14 @@ public class DriverMode extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()){
-            if(gamepad1.left_stick_y <= STICK_TRESHOLD && gamepad1.left_stick_y >= -STICK_TRESHOLD ) inputForward = 0;
-            else inputForward = gamepad1.left_stick_y;
-            if(gamepad1.right_stick_x <= STICK_TRESHOLD && gamepad1.right_stick_x >= -STICK_TRESHOLD ) inputSteer = 0;
-            else inputSteer = gamepad1.right_stick_x;
-
-            if(inputSteer == 0) {
-                outputRight = inputForward;
-                outputLeft = inputForward;
+            if(gamepad1.left_stick_y != 0){
+                robot.mergatoare.putereStanga(gamepad1.left_stick_y);
+                robot.mergatoare.putereDreapta(gamepad1.left_stick_y);
             }
-            if(inputSteer > 0){
-                outputLeft = inputForward;
-                outputRight = inputForward - inputSteer * inputForward;
-            }
-            if(inputSteer < 0){
-                outputRight = inputForward;
-                outputLeft = inputForward + inputSteer * inputForward;
-            }
-            if(inputForward == 0)
-            {
-                robot.mergatoare.setMotorPowers(-inputSteer, inputSteer, speed);
-            }
-
-            robot.mergatoare.setMotorPowers(outputLeft, outputRight, speed);
-
+//            if(gamepad1.left_stick_y <= 0){
+//                robot.mergatoare.putereStanga(gamepad1.left_stick_y);
+//                robot.mergatoare.putereDreapta(gamepad1.left_stick_y);
+//            }
         }
     }
 }
