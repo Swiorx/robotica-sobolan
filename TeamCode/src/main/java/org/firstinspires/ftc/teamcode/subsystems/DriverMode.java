@@ -34,14 +34,14 @@ public class DriverMode extends LinearOpMode {
                 robot.mergatoare.putereDreapta(gamepad1.right_trigger);
             }
             if(gamepad1.left_trigger < 0){
-                robot.mergatoare.putereStanga(gamepad1.left_trigger);
-                robot.mergatoare.putereDreapta(gamepad1.left_trigger);
+                robot.mergatoare.putereStanga(-gamepad1.left_trigger);
+                robot.mergatoare.putereDreapta(-gamepad1.left_trigger);
             }
             if((gamepad1.left_trigger == 0) && (gamepad1.right_trigger == 0)){
                 robot.mergatoare.setMotorPowers(0, 0);
             }
             if(gamepad1.left_stick_x < 0 ){
-                putereMotorDirectie = putereMotorDirectie - 0.3;
+                putereMotorDirectie = gamepad1.left_stick_x - 0.1;
                 if(putereMotorDirectie < 0){
                     Math.abs(putereMotorDirectie);
                 }
@@ -49,7 +49,7 @@ public class DriverMode extends LinearOpMode {
                 robot.mergatoare.putereDreapta(gamepad1.left_stick_x);
             }
             if(gamepad1.left_stick_x > 0 ){
-                putereMotorDirectie = putereMotorDirectie - 0.3;
+                putereMotorDirectie = gamepad1.left_stick_x - 0.1;
                 if(putereMotorDirectie < 0){
                     Math.abs(putereMotorDirectie);
                 }
