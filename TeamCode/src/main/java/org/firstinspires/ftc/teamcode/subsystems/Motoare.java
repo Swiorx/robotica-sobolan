@@ -15,7 +15,7 @@ public class Motoare {
         motorStanga.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorStanga.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        motorDreapta.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorDreapta.setDirection(DcMotorSimple.Direction.FORWARD);
         motorDreapta.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorDreapta.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
